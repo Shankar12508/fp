@@ -1,0 +1,459 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 222.2 84% 4.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222.2 84% 4.9%;
+        --primary: 222.2 47.4% 11.2%;
+        --primary-foreground: 210 40% 98%;
+        --secondary: 210 40% 96.1%;
+        --secondary-foreground: 222.2 47.4% 11.2%;
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+        --accent: 210 40% 96.1%;
+        --accent-foreground: 222.2 47.4% 11.2%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+        --ring: 222.2 84% 4.9%;
+        --radius: 0.5rem;
+    }
+
+    .dark {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+        --card: 222.2 84% 4.9%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222.2 84% 4.9%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 210 40% 98%;
+        --primary-foreground: 222.2 47.4% 11.2%;
+        --secondary: 217.2 32.6% 17.5%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217.2 32.6% 17.5%;
+        --muted-foreground: 215 20.2% 65.1%;
+        --accent: 217.2 32.6% 17.5%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 217.2 32.6% 17.5%;
+        --input: 217.2 32.6% 17.5%;
+        --ring: 212.7 26.8% 83.9%;
+    }
+
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-[#f5f5f5] text-[#111];
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-light leading-[1.1] tracking-tight;
+    }
+
+    h1 {
+        @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extralight;
+    }
+
+    h2 {
+        @apply text-3xl md:text-4xl lg:text-5xl font-light;
+    }
+
+    h3 {
+        @apply text-2xl md:text-3xl font-light;
+    }
+
+    p {
+        @apply leading-relaxed;
+    }
+
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Modern 3rdbase.io style effects */
+.text-balance {
+    text-wrap: balance;
+}
+
+.split-text-container span {
+    @apply inline-block overflow-hidden;
+}
+
+.split-text-container span span {
+    @apply block;
+}
+
+.hover-lift {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+/* Smooth link underline animation */
+.link-underline {
+    position: relative;
+    display: inline-block;
+}
+
+.link-underline::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.link-underline:hover::after {
+    transform-origin: bottom left;
+    transform: scaleX(1);
+}
+
+/* Hover image scale */
+.hover-scale {
+    overflow: hidden;
+}
+
+.hover-scale img {
+    transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hover-scale:hover img {
+    transform: scale(1.05);
+}
+
+/* Custom button styles */
+.btn-3rdbase {
+    @apply py-3 px-7 inline-flex items-center rounded-md transition-all duration-300;
+    position: relative;
+    overflow: hidden;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+.btn-primary {
+    @apply bg-black text-white;
+}
+
+.btn-outline {
+    @apply border border-black text-black bg-transparent hover:bg-black hover:text-white;
+}
+
+.btn-white {
+    @apply bg-white text-black hover:bg-white/90;
+}
+
+.btn-outline-white {
+    @apply border border-white text-white bg-transparent hover:bg-white hover:text-black;
+}
+
+.btn-arrow span {
+    @apply inline-block transition-transform duration-300;
+}
+
+.btn-arrow:hover span {
+    transform: translateX(5px);
+}
+
+/* Arrow animation */
+.arrow-animate {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.arrow-container:hover .arrow-animate {
+    transform: translateX(5px);
+}
+
+/* Custom cards with hover effect */
+.card-3d {
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-3d:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* Section spacing */
+.section-spacing {
+    @apply py-24 md:py-32 lg:py-40;
+}
+
+/* Border animation */
+@keyframes borderPulse {
+
+    0%,
+    100% {
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    50% {
+        border-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
+.border-animate {
+    animation: borderPulse 3s infinite;
+}
+
+/* Minimal custom scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Fixed header blur */
+.header-blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(245, 245, 245, 0.8);
+}
+
+/* Image mask for diagonal cutouts */
+.image-mask {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+/* Animation delay utilities */
+.delay-100 {
+    transition-delay: 100ms;
+}
+
+.delay-200 {
+    transition-delay: 200ms;
+}
+
+.delay-300 {
+    transition-delay: 300ms;
+}
+
+.delay-400 {
+    transition-delay: 400ms;
+}
+
+.delay-500 {
+    transition-delay: 500ms;
+}
+
+/* Scroll animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.fade-in-left {
+    opacity: 0;
+    animation: fadeInLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.fade-in-right {
+    opacity: 0;
+    animation: fadeInRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.stagger-100 {
+    animation-delay: 100ms;
+}
+
+.stagger-200 {
+    animation-delay: 200ms;
+}
+
+.stagger-300 {
+    animation-delay: 300ms;
+}
+
+.stagger-400 {
+    animation-delay: 400ms;
+}
+
+.stagger-500 {
+    animation-delay: 500ms;
+}
+
+/* Grid layout helpers */
+.grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Marquee animation */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.marquee {
+    animation: marquee 20s linear infinite;
+}
+
+/* Highlight text effect */
+.highlight-text {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.highlight-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: rgba(0, 0, 0, 0.05);
+    z-index: -1;
+}
+
+/* Scroll-triggered reveal animations */
+.reveal-on-scroll {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0s 0.5s;
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0s 0s;
+}
+
+/* Reveal direction variants */
+.reveal-from-bottom {
+    transform: translateY(40px);
+}
+
+.reveal-from-bottom.is-revealed {
+    transform: translateY(0);
+}
+
+.reveal-from-left {
+    transform: translateX(-40px);
+}
+
+.reveal-from-left.is-revealed {
+    transform: translateX(0);
+}
+
+.reveal-from-right {
+    transform: translateX(40px);
+}
+
+.reveal-from-right.is-revealed {
+    transform: translateX(0);
+}
+
+/* Staggered reveal timing for child elements */
+.stagger-children>*:nth-child(1) {
+    transition-delay: 0ms;
+}
+
+.stagger-children>*:nth-child(2) {
+    transition-delay: 100ms;
+}
+
+.stagger-children>*:nth-child(3) {
+    transition-delay: 200ms;
+}
+
+.stagger-children>*:nth-child(4) {
+    transition-delay: 300ms;
+}
+
+.stagger-children>*:nth-child(5) {
+    transition-delay: 400ms;
+}
+
+/* Text columns for readability */
+.text-columns-2 {
+    column-count: 2;
+    column-gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .text-columns-2 {
+        column-count: 1;
+    }
+}

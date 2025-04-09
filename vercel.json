@@ -1,0 +1,50 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "client/**",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "api/**/*.ts",
+            "use": "@vercel/node"
+        }
+    ],
+    "headers": [
+        {
+            "source": "/(.*)\\.js",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/javascript"
+                }
+            ]
+        },
+        {
+            "source": "/(.*)\\.tsx",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/javascript"
+                }
+            ]
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/client/$1"
+        },
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "/.*",
+            "dest": "/client/index.html"
+        }
+    ]
+}
